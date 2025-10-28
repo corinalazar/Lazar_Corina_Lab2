@@ -20,21 +20,36 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form asp-page="./Index" method="get">
+ <div class="form-actions no-color">
+ <p>
+ Find by Book Title / Author Name:
+ <input type="text" name="SearchString" value="@Model.CurrentFilter"
+/>
+ <input type="submit" value="Search" class="btn btn-primary" /> |
+ <a asp-page="./Index">Back to full List</a>
+ </p>
+ </div>
+</form>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Book[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Book[0].Author)
-            </th>
+           <th>
+ <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+ @Html.DisplayNameFor(model => model.Book[0].Title)
+ </a>
+ </th>
            
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Price)
             </th>
             <th>
                 @Html.DisplayNameFor(Model => Model.Book[0].PublishingDate)
+            </th>
+            <th colspan="2">
+              <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                    @Html.DisplayNameFor(model => model.Book[0].Author)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Publisher.PublisherName)
@@ -57,10 +72,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-                <td>
-                    @item.Author?.FirstName @item.Author?.LastName 
-                </td>
-
+            
 
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
@@ -68,6 +80,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PublishingDate)
             </td>
+                <td>
+                    @item.Author?.FirstName @item.Author?.LastName 
+                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
                 </td>
