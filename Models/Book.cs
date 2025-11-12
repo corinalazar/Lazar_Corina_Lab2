@@ -24,6 +24,7 @@ namespace Lazar_Corina_Lab2.Models
         // Navigation property
         public Author? Author { get; set; }
 
+        public ICollection<Borrowing>? Borrowings { get; set; }
         public ICollection<BookCategory>? BookCategories { get; set; }
 
 
