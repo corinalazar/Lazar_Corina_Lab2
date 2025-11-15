@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lazar_Corina_Lab2.Data;
+using Lazar_Corina_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Lazar_Corina_Lab2.Data;
-using Lazar_Corina_Lab2.Models;
 
 namespace Lazar_Corina_Lab2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Lazar_Corina_Lab2.Data.Lazar_Corina_Lab2Context _context;
